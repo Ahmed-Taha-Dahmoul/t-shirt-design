@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+		}
+		header ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		header li {
+			float: left;
+		}
+		header li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		header li a:hover {
+			background-color: #111;
+		}
+		section {
+			padding: 20px;
+		}
+		footer {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+		footer button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 12px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		 footer button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+    
+	<header>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Design a T-Shirt</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            {% if request.user.is_authenticated %}
+                <li style="float:right">
+                    <a href="/profile">{{ request.user.username }}</a>
+                </li>
+            {% else %}
+                <li style="float:right"><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </header>
+	  
+	<section>
+		<h1>Welcome to our website</h1>
+		<p>This is the home page</p>
+	</section>
+	<footer>
+		<button onclick="location.href='/logout'">Log out</button>
+	</footer>
+  
+
+</body>
+</html>
